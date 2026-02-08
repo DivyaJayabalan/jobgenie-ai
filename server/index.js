@@ -71,7 +71,9 @@ applications[index].history.push({ status, date: new Date() });
 });
 
 
-fastify.listen({ port: 5000 }, err => {
+const PORT = process.env.PORT || 5000;
+
+fastify.listen({ port: PORT, host: "0.0.0.0" }, err => {
   if (err) throw err;
-  console.log("Server running on http://localhost:5000");
+  console.log(`Server running on port ${PORT}`);
 });
