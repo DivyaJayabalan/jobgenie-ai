@@ -113,7 +113,7 @@ Scenario	Handling
 10k Users	Stateless API design
 AI calls	Async + rate control
 ⚖️ Tradeoffs
-Limitation	Future Improvement
-In-memory storage	Move to DB
-Simple skill match	Semantic embedding
-Basic filters	Advanced search engine
+Limitation           ---Future Improvement
+In-memory storage    ---Move to DB
+Simple skill match   ---Semantic embedding
+Basic filters        ---Advanced search engine
