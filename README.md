@@ -1,74 +1,119 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+JobGenie AI – Smart Job Matching Platform
+🧠 Architecture Overview
+User → React Frontend
+        ↓
+   Node.js + Fastify Backend
+        ↓
+ LangChain Job Matching Engine
+        ↓
+ LangGraph AI Assistant Controller
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+⚙️ Setup Instructions
+Prerequisites
 
-## Available Scripts
+Node.js 18+
 
-In the project directory, you can run:
+npm
 
-### `npm start`
+OpenAI API key
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Local Setup
+git clone <repo>
+cd client
+npm install
+npm start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Backend
+cd server
+npm install
+node index.js
 
-### `npm test`
+🔗 LangChain Usage (Job Matching)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+LangChain is used to:
 
-### `npm run build`
+Extract resume text
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Compare with job skills
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Generate similarity score (0–100%)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Provide explanation of matching skills
 
-### `npm run eject`
+Prompt design focuses on:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Skill overlap
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Keyword alignment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Experience relevance
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+🧩 LangGraph Usage (AI Assistant)
 
-## Learn More
+LangGraph controls:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Node	Function
+Intent Detection	Understand user query
+Filter Update	Modify UI filters
+Search Tool	Find matching jobs
+Response Node	Return structured answer
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+LangGraph maintains conversation state and routes actions dynamically.
 
-### Code Splitting
+📊 AI Matching Logic
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Score calculation based on:
 
-### Analyzing the Bundle Size
+Skill match ratio
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Keyword similarity
 
-### Making a Progressive Web App
+Experience relevance
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Why it works:
 
-### Advanced Configuration
+Focuses on core job skills
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Reduces noise
 
-### Deployment
+Fast performance for 100+ jobs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+💬 Popup Flow Design
 
-### `npm run build` fails to minify
+When user clicks Apply:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# jobgenie-ai
->>>>>>> 3600dbcf44adddb28c2e18278abf813468e9d43f
+Job link opens in new tab
+
+When user returns → popup asks
+“Did you complete the application?”
+
+Edge cases handled:
+
+Tab closed early
+
+Multiple applications
+
+User abandons process
+
+🤖 AI Assistant UI Choice
+
+Chosen: Floating chat bubble
+
+Reason:
+
+Non-intrusive
+
+Always accessible
+
+Modern UX pattern
+
+📈 Scalability
+Scenario	Handling
+100+ Jobs	Efficient scoring & filtering
+10k Users	Stateless API design
+AI calls	Async + rate control
+⚖️ Tradeoffs
+Limitation	Future Improvement
+In-memory storage	Move to DB
+Simple skill match	Semantic embedding
+Basic filters	Advanced search engine
