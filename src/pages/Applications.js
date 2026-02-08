@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function Applications() {
   const [applications, setApplications] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/applications")
+    api.get("/applications")
       .then(res => setApplications(res.data))
       .catch(err => console.log(err));
   }, []);
 
   // 🔥 Function must be here, NOT inside return
   const updateStatus = (index, status) => {
-    axios.put("http://localhost:5000/update-status", { index, status })
-      .then(() => {
-        axios.get("http://localhost:5000/applications")
-          .then(res => setApplications(res.data));
-      })
+    api.put("/update-status", { index, status })
+  .then(() => {
+    api.get("/applications")
+      .then(res => setApplications(res.data));
+  })
+
       .catch(err => console.log(err));
   };
 

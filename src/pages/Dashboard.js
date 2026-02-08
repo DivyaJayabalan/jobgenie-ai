@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import JobCard from "../components/JobCard";
 import ChatBox from "../components/ChatBox";
 
@@ -34,7 +34,7 @@ function Dashboard({ dark }) {
 
 
   useEffect(() => {
-    axios.post("http://localhost:5000/jobs", { resumeSkills })
+  api.post("/jobs", { resumeSkills })
       .then(res => setJobs(res.data))
       .catch(err => console.log(err));
   }, [resumeSkills]);
